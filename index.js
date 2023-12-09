@@ -9,6 +9,8 @@ const app = express()
 //meghatarozzuk a 'port' valtozot
 const port = 3000
 
+//fogja es az adott requesteket atalakitja jsonne, middleware, ehhez a requestnel be kell allitani a headersben a content typeot : application/json harert (a postmanben kell beallitani
+app.use(express.json())
 
 // a localhost:port vagy a 127.0.0.1:port felkeresesekor elerhetove tesszuk az indexet
 app.get('/', (req, res) => {
@@ -37,6 +39,7 @@ app.get('/users', (req, res) => {
 app.get('/users/:userid/', (req, res) => {
 //res.send(req.params.userid) //: utani resz userid neven jon letre a backenden a request paramsban 
 //a bejovo parametert atalakitom szamma
+
 const userId = parseInt(req.params.userid)
 
 //lecsekkolom hogy sikerult e szamma alakitani
@@ -81,3 +84,8 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
+app.post('user/new-user', (req, res) => {
+console.dir(req)
+
+res.send('ok')
+})
