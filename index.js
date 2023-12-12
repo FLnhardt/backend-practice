@@ -123,6 +123,12 @@ app.post('/users/new-user', (req, res) => {
   })
 })
 
+app.delete('/users/delete', (req, res) => {
+console.log(req.body)
+
+res.json('ok')
+})
+
 /* elkezdi figyelni az adott portot a számítógépen (localhost vagy 127.0.0.1) */
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
